@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Random; //the Random object
+
 public class Tester {
 
   public static void main(String[] args) {
@@ -41,5 +43,36 @@ public class Tester {
     int[] snowball = new int[]{2,6,0,-1,1,1,6,9,100,2,2,2,7,8,-1,-1};
     Sorts.bubbleSort(snowball);
     System.out.println(Arrays.toString(snowball));
+    System.out.println();
+
+    //here no seed is provided, so it uses the clock as a seed
+    //this can be used to produce a random seed for a different Random object!
+    Random rng = new Random();
+    int badGo = 0;
+    for (int times = 0; times < 10000; times++) {
+      int[] randomArray = new int[1000];
+      for(int i =  0; i < 1000; i++ ){
+        randomArray[i] = rng.nextInt() % 1000;
+      }
+      int[] actualSort = Arrays.copyOf(randomArray,1000);
+      Sorts.bubbleSort(randomArray);
+      Arrays.sort(actualSort);
+      if (!allEqual(randomArray, actualSort)) { //if they're not equal, debugging time
+        System.out.println(Arrays.toString(randomArray));
+        System.out.println(Arrays.toString(actualSort));
+        System.out.println();
+        badGo++;
+      }
+    }
+    System.out.println(badGo);
   }
+
+  public static boolean allEqual(int[] a1, int[] a2) {
+    boolean equal = true;
+    for (int k = 0; k < a1.length && equal; k++) {
+      if (a1[k] != a2[k]) equal = false;
+    }
+    return equal;
+  }
+
 }
