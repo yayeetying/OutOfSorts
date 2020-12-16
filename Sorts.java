@@ -7,7 +7,7 @@ public class Sorts {
   //param data is the elements to be sorted.
   public static void bubbleSort(int[] data) { //doesn't return anything cuz you're modifying the int[]
     for (int i = 1; i <= data.length; i++) { //# of times you need to go thru the array
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       int swap = 0; //number of times elements were swapped in 1 loop of the array
       for (int k = 0; k < data.length-i; k++) { //everytime, you check one less element on the right
         //also though, i starts with 1 so you won't get index outta bounds error
@@ -23,5 +23,6 @@ public class Sorts {
         i = data.length;
       }
     }
+    //System.out.println();
   }
 }
