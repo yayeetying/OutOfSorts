@@ -3,48 +3,17 @@ import java.util.Random; //the Random object
 
 public class Tester {
 
-  public static void main(String[] args) {
+  //ok but can i introduce you to Arrays.equals()?
+  public static boolean allEqual(int[] a1, int[] a2) {
+    boolean equal = true;
+    for (int k = 0; k < a1.length && equal; k++) {
+      if (a1[k] != a2[k]) equal = false;
+    }
+    return equal;
+  }
 
-    int[] bubsort1 = new int[]{5,1,12,-5,16};
-    int[] bubsort2 = new int[]{2,3,4,5,1};
-    int[] bubsort3 = new int[]{6,1,2,3,4,5};
-    Sorts.bubbleSort(bubsort1);
-    Sorts.bubbleSort(bubsort2);
-    Sorts.bubbleSort(bubsort3);
-    System.out.println(Arrays.toString(bubsort1));
-    System.out.println(Arrays.toString(bubsort2));
-    System.out.println(Arrays.toString(bubsort3));
-
-    int[] snowing = new int[0];
-    Sorts.bubbleSort(snowing);
-    System.out.println(Arrays.toString(snowing));
-    System.out.println("rev sorted");
-    int[] today = new int[]{10,9,8,7,6,5,4,3,2,1,0};
-    int[] yay = new int[]{96, 74, 56, 54, 31, 19, 7, 3, -6, -37, -59};
-    Sorts.bubbleSort(today);
-    Sorts.bubbleSort(yay);
-    System.out.println(Arrays.toString(today));
-    System.out.println(Arrays.toString(yay));
-    System.out.println("already sorted");
-    Sorts.bubbleSort(today);
-    Sorts.bubbleSort(yay);
-    System.out.println(Arrays.toString(today));
-    System.out.println(Arrays.toString(yay));
-    System.out.println("almost sorted");
-    today[7] = 89; today[3] = 59; today[9] = 1;
-    yay[2] = -10000; yay[4] = -67; yay[7] = 88;
-    System.out.println(Arrays.toString(today));
-    Sorts.bubbleSort(today);
-    System.out.println(Arrays.toString(today));
-    System.out.println(Arrays.toString(yay));
-    Sorts.bubbleSort(yay);
-    System.out.println(Arrays.toString(yay));
-    System.out.println("replicates");
-    int[] snowball = new int[]{2,6,0,-1,1,1,6,9,100,2,2,2,7,8,-1,-1};
-    Sorts.bubbleSort(snowball);
-    System.out.println(Arrays.toString(snowball));
-    System.out.println();
-
+  //param whichSort - input 1, does bubbleSort; 2, selectionSort; 3, insertionSort
+  public static int badGoRun(int whichSort) {
     //here no seed is provided, so it uses the clock as a seed
     //this can be used to produce a random seed for a different Random object!
     Random rng = new Random();
@@ -55,7 +24,13 @@ public class Tester {
         randomArray[i] = rng.nextInt() % 1000;
       }
       int[] actualSort = Arrays.copyOf(randomArray,1000);
-      Sorts.bubbleSort(randomArray);
+      if (whichSort == 1) {
+        Sorts.bubbleSort(randomArray);
+      }
+      else if (whichSort == 2) {
+        Sorts.selectionSort(randomArray);
+      }
+      else {Sorts.insertionSort(randomArray);}
       Arrays.sort(actualSort);
       if (!allEqual(randomArray, actualSort)) { //if they're not equal, debugging time
         System.out.println(Arrays.toString(randomArray));
@@ -64,15 +39,109 @@ public class Tester {
         badGo++;
       }
     }
-    System.out.println(badGo);
+    return badGo;
   }
 
-  public static boolean allEqual(int[] a1, int[] a2) {
-    boolean equal = true;
-    for (int k = 0; k < a1.length && equal; k++) {
-      if (a1[k] != a2[k]) equal = false;
-    }
-    return equal;
+  public static void main(String[] args) {
+
+    int[] bubsort1 = new int[]{5,1,12,-5,16};
+    int[] bubsort2 = new int[]{2,3,4,5,1};
+    int[] bubsort3 = new int[]{6,1,2,3,4,5};
+    int[] snowing = new int[0];
+    int[] today = new int[]{10,9,8,7,6,5,4,3,2,1,0};
+    int[] yay = new int[]{96, 74, 56, 54, 31, 19, 7, 3, -6, -37, -59};
+    int[] snowball = new int[]{2,6,0,-1,1,1,6,9,100,2,2,2,7,8,-1,-1};
+
+    System.out.println("BUBBLESORT");
+    int[] cbubsort1 = Arrays.copyOf(bubsort1, 5);
+    int[] cbubsort2 = Arrays.copyOf(bubsort2, 5);
+    int[] cbubsort3 = Arrays.copyOf(bubsort3, 6);
+    Sorts.bubbleSort(cbubsort1);
+    Sorts.bubbleSort(cbubsort2);
+    Sorts.bubbleSort(cbubsort3);
+    System.out.println(Arrays.toString(cbubsort1));
+    System.out.println(Arrays.toString(cbubsort2));
+    System.out.println(Arrays.toString(cbubsort3));
+
+    int[] csnowing = Arrays.copyOf(snowing, 0);
+    Sorts.bubbleSort(csnowing);
+    System.out.println(Arrays.toString(csnowing));
+    System.out.println("rev sorted");
+    int[] ctoday = Arrays.copyOf(today, 11);
+    int[] cyay = Arrays.copyOf(yay, 11);
+    Sorts.bubbleSort(ctoday);
+    Sorts.bubbleSort(cyay);
+    System.out.println(Arrays.toString(ctoday));
+    System.out.println(Arrays.toString(cyay));
+    System.out.println("already sorted");
+    Sorts.bubbleSort(ctoday);
+    Sorts.bubbleSort(cyay);
+    System.out.println(Arrays.toString(ctoday));
+    System.out.println(Arrays.toString(cyay));
+    System.out.println("almost sorted");
+    ctoday[7] = 89; ctoday[3] = 59; ctoday[9] = 1;
+    cyay[2] = -10000; cyay[4] = -67; cyay[7] = 88;
+    System.out.println(Arrays.toString(ctoday));
+    Sorts.bubbleSort(ctoday);
+    System.out.println(Arrays.toString(ctoday));
+    System.out.println(Arrays.toString(cyay));
+    Sorts.bubbleSort(cyay);
+    System.out.println(Arrays.toString(cyay));
+    System.out.println("replicates");
+    int[] csnowball = Arrays.copyOf(snowball, 16);
+    Sorts.bubbleSort(csnowball);
+    System.out.println(Arrays.toString(csnowball));
+    System.out.println();
+
+    //badGoRun; doing bubbleSort, so input 1
+    System.out.println(badGoRun(1));
+
+    System.out.println("~~~~~~~~~~~~");
+
+    System.out.println("SELECTIONSORT");
+    int[] c2bubsort1 = Arrays.copyOf(bubsort1, 5);
+    int[] c2bubsort2 = Arrays.copyOf(bubsort2, 5);
+    int[] c2bubsort3 = Arrays.copyOf(bubsort3, 6);
+    Sorts.selectionSort(c2bubsort1);
+    Sorts.selectionSort(c2bubsort2);
+    Sorts.selectionSort(c2bubsort3);
+    System.out.println(Arrays.toString(c2bubsort1));
+    System.out.println(Arrays.toString(c2bubsort2));
+    System.out.println(Arrays.toString(c2bubsort3));
+
+    int[] c2snowing = Arrays.copyOf(snowing, 0);
+    Sorts.selectionSort(c2snowing);
+    System.out.println(Arrays.toString(c2snowing));
+    System.out.println("rev sorted");
+    int[] c2today = Arrays.copyOf(today, 11);
+    int[] c2yay = Arrays.copyOf(yay, 11);
+    Sorts.selectionSort(c2today);
+    Sorts.selectionSort(c2yay);
+    System.out.println(Arrays.toString(c2today));
+    System.out.println(Arrays.toString(c2yay));
+    System.out.println("already sorted");
+    Sorts.selectionSort(c2today);
+    Sorts.selectionSort(c2yay);
+    System.out.println(Arrays.toString(c2today));
+    System.out.println(Arrays.toString(c2yay));
+    System.out.println("almost sorted");
+    c2today[7] = 89; c2today[3] = 59; c2today[9] = 1;
+    c2yay[2] = -10000; c2yay[4] = -67; c2yay[7] = 88;
+    System.out.println(Arrays.toString(c2today));
+    Sorts.selectionSort(c2today);
+    System.out.println(Arrays.toString(c2today));
+    System.out.println(Arrays.toString(c2yay));
+    Sorts.selectionSort(c2yay);
+    System.out.println(Arrays.toString(c2yay));
+    System.out.println("replicates");
+    int[] c2snowball = Arrays.copyOf(snowball, 16);
+    Sorts.selectionSort(c2snowball);
+    System.out.println(Arrays.toString(c2snowball));
+    System.out.println();
+
+    System.out.println(badGoRun(2));
+
+    System.out.println("~~~~~~~~~~~~");
   }
 
 }
