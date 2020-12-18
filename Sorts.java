@@ -47,7 +47,19 @@ public class Sorts {
   //insertion sort of an int array.
   //postcondition The array will be modified such that the elements will be in increasing order.
   //param data - the elements to be sorted.
+  //**think of array separated into left and right; left is ordered, right are the unordered elements
   public static void insertionSort(int[] data) {
-    
+    //start w the 2nd element, cuz the first element is alrdy "sorted" (cuz theres only 1 element)
+    for (int i = 1; i < data.length; i++) {
+      int index = 0; //is the index the element should be in
+      for (int k = 0; k < i; k++) {
+        if (data[i] > data[k]) index++;
+      }
+      for (int j = index; j < data.length-1; j++) {
+        int temp = data[j];
+        data[j] = data[i];
+        data[j+1] = temp;
+      }
+    }
   }
 }
