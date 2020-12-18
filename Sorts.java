@@ -25,4 +25,29 @@ public class Sorts {
     }
     //System.out.println();
   }
+
+  //selection sort of an int array.
+  //postcondition The array will be modified such that the elements will be in increasing order.
+  //param data - the elements to be sorted.
+  //doesn't stop early, so best case scenario is also worst case scenario
+  public static void selectionSort(int[] data) {
+    for (int i = 0; i < data.length; i++) { //number of times you go through the loop
+      int minElement = data[i];
+      for (int k = i; k < data.length; k++) {
+        if (data[k] < minElement) {
+          int temp = minElement;
+          minElement = data[k];
+          data[k] = temp;
+        }
+      }
+      data[i] = minElement;
+    }
+  }
+
+  //insertion sort of an int array.
+  //postcondition The array will be modified such that the elements will be in increasing order.
+  //param data - the elements to be sorted.
+  public static void insertionSort(int[] data) {
+    
+  }
 }
