@@ -139,9 +139,54 @@ public class Tester {
     System.out.println(Arrays.toString(c2snowball));
     System.out.println();
 
+    //badGoRun; doing selectionSort, so input 2
     System.out.println(badGoRun(2));
 
     System.out.println("~~~~~~~~~~~~");
+
+    System.out.println("INSERTIONSORT");
+    int[] c3bubsort1 = Arrays.copyOf(bubsort1, 5);
+    int[] c3bubsort2 = Arrays.copyOf(bubsort2, 5);
+    int[] c3bubsort3 = Arrays.copyOf(bubsort3, 6);
+    Sorts.insertionSort(c3bubsort1);
+    Sorts.insertionSort(c3bubsort2);
+    Sorts.insertionSort(c3bubsort3);
+    System.out.println(Arrays.toString(c3bubsort1));
+    System.out.println(Arrays.toString(c3bubsort2));
+    System.out.println(Arrays.toString(c3bubsort3));
+
+    int[] c3snowing = Arrays.copyOf(snowing, 0);
+    Sorts.insertionSort(c3snowing);
+    System.out.println(Arrays.toString(c3snowing));
+    System.out.println("rev sorted");
+    int[] c3today = Arrays.copyOf(today, 11);
+    int[] c3yay = Arrays.copyOf(yay, 11);
+    Sorts.insertionSort(c3today);
+    Sorts.insertionSort(c3yay);
+    System.out.println(Arrays.toString(c3today));
+    System.out.println(Arrays.toString(c3yay));
+    System.out.println("already sorted");
+    Sorts.insertionSort(c3today);
+    Sorts.insertionSort(c3yay);
+    System.out.println(Arrays.toString(c3today));
+    System.out.println(Arrays.toString(c3yay));
+    System.out.println("almost sorted");
+    c3today[7] = 89; c3today[3] = 59; c3today[9] = 1;
+    c3yay[2] = -10000; c3yay[4] = -67; c3yay[7] = 88;
+    System.out.println(Arrays.toString(c3today));
+    Sorts.insertionSort(c3today);
+    System.out.println(Arrays.toString(c3today));
+    System.out.println(Arrays.toString(c3yay));
+    Sorts.insertionSort(c3yay);
+    System.out.println(Arrays.toString(c3yay));
+    System.out.println("replicates");
+    int[] c3snowball = Arrays.copyOf(snowball, 16);
+    Sorts.insertionSort(c3snowball);
+    System.out.println(Arrays.toString(c3snowball));
+    System.out.println();
+
+    //badGoRun; doing insertionSort, so input 3
+    System.out.println(badGoRun(3));
   }
 
 }

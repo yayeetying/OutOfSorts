@@ -51,14 +51,14 @@ public class Sorts {
   public static void insertionSort(int[] data) {
     //start w the 2nd element, cuz the first element is alrdy "sorted" (cuz theres only 1 element)
     for (int i = 1; i < data.length; i++) {
-      int index = 0; //is the index the element should be in
-      for (int k = 0; k < i; k++) {
-        if (data[i] > data[k]) index++;
-      }
-      for (int j = index; j < data.length-1; j++) {
-        int temp = data[j];
-        data[j] = data[i];
-        data[j+1] = temp;
+      if (data[i] < data[i-1]) {
+        for (int k = 0; k < i; k++) {
+          if (data[i] < data[k]) {
+            int temp = data[k];
+            data[k] = data[i];
+            data[i] = temp;
+          }
+        }
       }
     }
   }
