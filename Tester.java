@@ -94,7 +94,7 @@ public class Tester {
     System.out.println();
 
     //badGoRun; doing bubbleSort, so input 1
-    System.out.println(badGoRun(1));
+    //System.out.println(badGoRun(1));
 
     System.out.println("~~~~~~~~~~~~");
 
@@ -140,7 +140,7 @@ public class Tester {
     System.out.println();
 
     //badGoRun; doing selectionSort, so input 2
-    System.out.println(badGoRun(2));
+    //System.out.println(badGoRun(2));
 
     System.out.println("~~~~~~~~~~~~");
 
@@ -186,7 +186,8 @@ public class Tester {
     System.out.println();
 
     //badGoRun; doing insertionSort, so input 3
-    System.out.println(badGoRun(3));
+    //System.out.println(badGoRun(3));
+
   }
 
 }
